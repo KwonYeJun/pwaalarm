@@ -35,3 +35,14 @@ self.addEventListener('activate', event => {
     })
   );
 });
+
+self.addEventListener('push', function(event) {
+  console.log('[Service Worker] Push Received.');
+  const title = 'Push Notification';
+  const options = {
+    body: 'Your push notification message here',
+    icon: 'icon.png',
+    badge: 'badge.png'
+  };
+  event.waitUntil(self.registration.showNotification(title, options));
+});
